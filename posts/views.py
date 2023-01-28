@@ -6,6 +6,10 @@ from .serializers import PostSerializer
 
 
 class PostList(APIView):
+    """
+    Get to list all posts
+    Post to create a post
+    """
     serializer_class = PostSerializer
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
