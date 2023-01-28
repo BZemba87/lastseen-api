@@ -1,8 +1,10 @@
 from django.http import Http404
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Profile
 from .serializers import ProfileSerializer
+from lastseenapi.permissions import IsOwnerOrReadOnly
 
 
 class ProfileList(APIView):
@@ -17,13 +19,16 @@ class ProfileList(APIView):
 
 class ProfileDetail(APIView):
     """
-    Handles requests for a profile that doesn't exist
+    Functionality that edits profile and 
+    handles requests for a profile that doesn't exist
     """
     serializer_class = ProfileSerializer
+    permission_classes = [IsOwnerOrReadOnly]
 
     def get_object(self, pk):
         try:
             profile = Profile.objects.get(pk=pk)
+            self.check_object_permissions(self.request, profile)
             return profile
         except Profile.DoesNotExist:
             raise Http404
