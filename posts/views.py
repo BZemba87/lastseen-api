@@ -42,7 +42,7 @@ class PostDetail(APIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = PostSerializer
     """
-    For user to update post if they have permission
+    For post owner to update and delete post
     Handles requests for posts that don't exist
     """
     def get_object(self, pk):
