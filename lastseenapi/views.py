@@ -5,5 +5,5 @@ from rest_framework.response import Response
 @api_view()
 def root_route(request):
     return Response({
-        "message": "Welcome to my API for Last Seen - social media image sharing site"
+        "message": "Welcome to my API for Last Seen - social media site"
     })
