@@ -11,4 +11,13 @@ class LikeList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = LikeSerializer
     queryset = Like.objects.all()
+
+
+class LikeDetail(generics.RetrieveDestroyAPIView):
+    """
+    Owner can retrieve or delete like by ID
+    """
+    permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = LikeSerializer
+    queryset = Like.objects.all()
     
