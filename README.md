@@ -50,6 +50,8 @@ A permissions class was added to views.py for Profiles, Posts and Comments apps 
 - Gitpod
 - Github
 
+# Issues
+- 
 
 
 
