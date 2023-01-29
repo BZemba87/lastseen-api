@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
 from lastseenapi.permissions import IsOwnerOrReadOnly
 from .models import Post
 from .serializers import PostSerializer
@@ -13,6 +13,13 @@ class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Post.objects.all()
+    filter_backends = [
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'owner__username',
+        'title',
+    ]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
