@@ -63,6 +63,11 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST')]
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
