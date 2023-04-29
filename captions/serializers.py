@@ -14,7 +14,7 @@ class CaptionSerializer(serializers.ModelSerializer):
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
-            raise serializers.ValidationError('Image must be smaller than 2MB!')
+            raise serializers.ValidationError('Pic must be smaller than 2MB!')
         if value.image.height > 4096:
             raise serializers.ValidationError(
                 'Image height larger than 4096px!'
@@ -31,7 +31,7 @@ class CaptionSerializer(serializers.ModelSerializer):
 
     def get_love_id(self, obj):
         '''
-        Logged in user can love the post and the love 
+        Logged in user can love the post and the love
         ID will be displayed in the post
         '''
         user = self.context['request'].user
@@ -41,17 +41,17 @@ class CaptionSerializer(serializers.ModelSerializer):
             ).first()
             return love.id if love else None
         return None
-    
+
     def get_fave_id(self, obj):
         '''
-        Logged in user can Fave the post and the Fave 
+        Logged in user can Fave the post and the Fave
         ID will be displayed in the post
         '''
         user = self.context['request'].user
         if user.is_authenticated:
             fave = Fave.objects.filter(
                 owner=user,
-                post=obj
+                caption=obj
             ).first()
             if fave:
                 return fave.id
@@ -59,7 +59,7 @@ class CaptionSerializer(serializers.ModelSerializer):
                 return None
         else:
             return None
-            
+
     class Meta:
         model = Caption
         fields = [
