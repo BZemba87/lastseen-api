@@ -1,14 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
-from posts.models import Post
+from captions.models import Caption
 
 
 class Comment(models.Model):
     """
-    Comment model for user and post
+    Comment model for user and caption
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    caption = models.ForeignKey(Caption, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
 

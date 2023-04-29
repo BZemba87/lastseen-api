@@ -89,9 +89,9 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'profiles',
-    'posts',
+    'captions',
     'comments',
-    'likes',
+    'love',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
@@ -146,7 +146,7 @@ else:
     DATABASES = {
          'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-    
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

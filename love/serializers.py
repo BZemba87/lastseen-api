@@ -1,18 +1,18 @@
 from django.db import IntegrityError
 from rest_framework import serializers
-from likes.models import Like
+from love.models import Love
 
 
-class LikeSerializer(serializers.ModelSerializer):
+class LoveSerializer(serializers.ModelSerializer):
     """
-    Serializer for the like model.
-    The create method handles duplicate likes with an error message.
+    Serializer for the love model.
+    The create method handles duplicate loves with an error message.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
-        model = Like
-        fields = ['id', 'created_at', 'owner', 'post']
+        model = Love
+        fields = ['id', 'created_at', 'owner', 'caption']
     
     def create(self, validated_data):
         try:
