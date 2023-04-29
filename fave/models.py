@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
-from caption.models import Caption
+from captions.models import Caption
 # Create your models here.
 
-class Fave(models.model):
+
+class Fave(models.Model):
     """
     Fave model is related to Owner and Caption model
     """
