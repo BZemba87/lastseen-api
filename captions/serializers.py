@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Caption
 from love.models import Love
+from fave.models import Fave
 
 
 class CaptionSerializer(serializers.ModelSerializer):
@@ -9,6 +10,7 @@ class CaptionSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     love_id = serializers.SerializerMethodField()
+    fave_id = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -28,6 +30,10 @@ class CaptionSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     def get_love_id(self, obj):
+        '''
+        Logged in user can love the post and the love 
+        ID will be displayed in the post
+        '''
         user = self.context['request'].user
         if user.is_authenticated:
             love = Love.objects.filter(
@@ -35,11 +41,29 @@ class CaptionSerializer(serializers.ModelSerializer):
             ).first()
             return love.id if love else None
         return None
-
+    
+    def get_fave_id(self, obj):
+        '''
+        Logged in user can Fave the post and the Fave 
+        ID will be displayed in the post
+        '''
+        user = self.context['request'].user
+        if user.is_authenticated:
+            fave = Fave.objects.filter(
+                owner=user,
+                post=obj
+            ).first()
+            if fave:
+                return fave.id
+            else:
+                return None
+        else:
+            return None
+            
     class Meta:
         model = Caption
         fields = [
             'id', 'owner', 'created_at', 'profile_id',
             'profile_image', 'title', 'content', 'image', 'is_owner',
-            'love_id',
+            'love_id', 'fave_id',
         ]

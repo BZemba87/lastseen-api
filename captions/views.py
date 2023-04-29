@@ -33,3 +33,4 @@ class CaptionDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CaptionSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Caption.objects.all()
+    
