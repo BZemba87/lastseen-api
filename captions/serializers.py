@@ -31,13 +31,13 @@ class CaptionSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if user.is_authenticated:
             love = Love.objects.filter(
-                owner=user, Caption=obj
+                owner=user, caption=obj
             ).first()
             return love.id if love else None
         return None
 
     class Meta:
-        model = Caption()
+        model = Caption
         fields = [
             'id', 'owner', 'created_at', 'profile_id',
             'profile_image', 'title', 'content', 'image', 'is_owner',
