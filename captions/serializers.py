@@ -11,6 +11,8 @@ class CaptionSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     love_id = serializers.SerializerMethodField()
     fave_id = serializers.SerializerMethodField()
+    love_count = serializers.ReadOnlyField()
+    fave_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -65,5 +67,5 @@ class CaptionSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'created_at', 'profile_id',
             'profile_image', 'title', 'content', 'image', 'is_owner',
-            'love_id', 'fave_id',
+            'love_id', 'fave_id', 'love_count', 'fave_count'
         ]
