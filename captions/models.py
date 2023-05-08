@@ -10,7 +10,7 @@ class Caption(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
-    location = models.CharField(blank=True, null=True)
+    location = models.CharField(blank=True, null=True, max_length=255)
     image = models.ImageField(
         upload_to='images/', default='../default_profile_qdjgyp', blank=True
     )
