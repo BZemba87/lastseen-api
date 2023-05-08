@@ -9,6 +9,7 @@ class CaptionSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    location = serializers.CharField()
     love_id = serializers.SerializerMethodField()
     fave_id = serializers.SerializerMethodField()
     love_count = serializers.ReadOnlyField()
