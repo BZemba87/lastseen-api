@@ -41,10 +41,7 @@ class CaptionList(generics.ListCreateAPIView):
     ]
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
-
-    def perform_create(self, serializer):
-        serializer.save(location=self.request.data['location'])
+        serializer.save(owner=self.request.user, location=self.request.data['location'])
 
 
 class CaptionDetail(generics.RetrieveUpdateDestroyAPIView):
