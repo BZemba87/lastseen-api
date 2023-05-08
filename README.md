@@ -28,9 +28,9 @@ In Profiles models.py, a signal was created in order to create a new user profil
 
 Users can create, read, update and delete a Caption successfully and logged out users can read a Caption.
 
-- As a developer, I want to create a Love Model so that logged in users can love and unlove a post
+- As a developer, I want to create a Love Model so that logged in users can love and unlove a Caption
 
-Only logged in users can successfully love and unlove a post.  
+Only logged in users can successfully love and unlove a Caption.  
 
 - As a developer, I want to create a Comments Model so that logged in users can create, read, update and delete a comment and logged out users can read a comment.
 
