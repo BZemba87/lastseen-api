@@ -66,6 +66,7 @@ class CaptionSerializer(serializers.ModelSerializer):
         model = Caption
         fields = [
             'id', 'owner', 'created_at', 'profile_id',
-            'profile_image', 'title', 'content', 'image', 'is_owner',
-            'love_id', 'fave_id', 'love_count', 'fave_count'
+            'profile_image', 'title', 'content', 'location',
+            'image', 'is_owner', 'love_id', 'fave_id',
+            'love_count', 'fave_count'
         ]
