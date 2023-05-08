@@ -12,7 +12,7 @@ class LoveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Love
         fields = ['id', 'created_at', 'owner', 'caption']
-  
+
     def create(self, validated_data):
         try:
             return super().create(validated_data)

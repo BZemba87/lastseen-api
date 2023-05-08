@@ -9,38 +9,44 @@ The goal of this API is to provide a backend service to allow the Last Seen fron
 # Developer Goals and User Stories
 - As a developer, I want to create a Profiles Model so that users can create a profile
 
-- As a developer, I want to create a Posts Model so that logged in users can create, read, update and delete a post and logged out users can read a post
+- As a developer, I want to create a Captions Model so that logged in users can create, read, update and delete a caption and logged out users can view a caption
 
-- As a developer, I want to create a Likes Model so that logged in users can like and unlike a post 
+- As a developer, I want to create a Love Model so that logged in users can love and unlove a Caption posted by other users  
 
 - As a developer, I want to create a Comments Model so that logged in users can create, read, update and delete a comment and logged out users can read a comment.
 
-- As a developer, I want to create a search function so users can search for posts by post title or username
+- As a developer, I want to create a Fave Model so that users can Fave any Caption that they want to see again.
+
+- As a developer, I want to create a search function so users can search for Captions by Caption title or username
 
 # Developer Goals - Tests
 - As a developer, I want to create a Profiles Model so that users can create a profile
 
 In Profiles models.py, a signal was created in order to create a new user profile on signup.
 
-- As a developer, I want to create a Posts Model so that logged in users can create, read, update and delete a post and logged out users can read a post
+- As a developer, I want to create a Captions Model so that logged in users can create, read, update and delete a Caption and logged out users can read a Caption
 
-Users can create, read, update and delete a post successfully and logged out users can read a post.
+Users can create, read, update and delete a Caption successfully and logged out users can read a Caption.
 
-- As a developer, I want to create a Likes Model so that logged in users can like and unlike a post
+- As a developer, I want to create a Love Model so that logged in users can love and unlove a post
 
-Only logged in users can successfully like and unlike a post.  
+Only logged in users can successfully love and unlove a post.  
 
 - As a developer, I want to create a Comments Model so that logged in users can create, read, update and delete a comment and logged out users can read a comment.
 
 Logged in users can create, read, update and delete comments and logged out users can only read comments.
 
-- As a developer, I want to create a search function so logged in/out users can search for posts by post title or username
+- As a developer, I want to create a Fave Model so that users can Fave any Caption that they want to see again
 
-Users can successfully search for posts by post title or username regardless of whether they are logged in or out.
+Logged in users can successfully Fave a Caption and then access their Fave Captions by clicking on the Fave Caption link on the Nav Bar which will generate all of the Captions that they have Faved.
+
+- As a developer, I want to create a search function so logged in/out users can search for Captions by Caption title or username
+
+Users can successfully search for Captions by Caption title or username regardless of whether they are logged in or out.
 
 # Security 
 
-A permissions class was added to views.py for Profiles, Posts and Comments apps called IsOwnerOrReadOnly to ensure only users who are owners of the profile, post or comment are able to update or delete.
+A permissions class was added to views.py for Profiles, Captions, Fave, Love and Comments apps called IsOwnerOrReadOnly to ensure only users who are owners of the Profile, Caption, Fave, Love or Comment are able to update or delete.
 
 # Technologies
 - Django REST Framework
@@ -138,6 +144,7 @@ A permissions class was added to views.py for Profiles, Posts and Comments apps 
 # Credit
 
 - Code Institute Django REST Framework walkthrough
+- Tutor Support 
 - Slack
 - Mentor 
 
