@@ -16,7 +16,6 @@ class CaptionList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Caption.objects.annotate(
         comments_count=Count('comment', distinct=True),
-        # love_count=Count('love', distinct=True),
         fave_count=Count('fave', distinct=True)
     ).order_by('-created_at')
 
@@ -28,15 +27,17 @@ class CaptionList(generics.ListCreateAPIView):
     filterset_fields = [
         'love__owner__profile',
         'owner__profile',
+        'fave__owner__profile',
     ]
     search_fields = [
         'owner__username',
         'title',
     ]
     ordering_fields = [
-        # 'love_count',
         'comments_count',
         'love__created_at',
+        'fave__created_on',
+        'fave_count',
     ]
 
     def perform_create(self, serializer):

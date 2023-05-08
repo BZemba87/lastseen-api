@@ -14,7 +14,7 @@ class FaveSerializer(serializers.ModelSerializer):
         model = Fave
         fields = ['id', 'owner', 'caption', 'created_on']
 
-    # Used CI Walkthrough Code 
+    # Used CI Walkthrough Code
     def create(self, validated_data):
         '''
         If a user tries to Fave the same post more than once,
@@ -24,5 +24,5 @@ class FaveSerializer(serializers.ModelSerializer):
             return super().create(validated_data)
         except IntegrityError:
             raise serializers.ValidationError({
-                'message': 'this caption is already your Fave'
+                'detail': 'possible duplicate'
             })

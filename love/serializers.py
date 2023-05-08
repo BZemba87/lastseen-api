@@ -6,14 +6,13 @@ from love.models import Love
 class LoveSerializer(serializers.ModelSerializer):
     """
     Serializer for the love model.
-    The create method handles duplicate loves with an error message.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Love
         fields = ['id', 'created_at', 'owner', 'caption']
-    
+  
     def create(self, validated_data):
         try:
             return super().create(validated_data)
