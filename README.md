@@ -2,6 +2,8 @@
 
 This API is the backend service for a social media image sharing platform called Last Seen.
 
+Please click link to live site [here](https://last-seen-api.herokuapp.com/)
+
 # Development Goals 
 
 The goal of this API is to provide a backend service to allow the Last Seen front end application to perform Create, Read, Update and Delete operations via the UI.
